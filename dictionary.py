@@ -13,7 +13,10 @@ def retrieve_definition(word):
     elif word.upper() in data:
         return data[word.upper()] # return definitions of words that are capital
     elif len(get_close_matches(word, data.keys())) > 0:
-        return ('Did you mean {} instead?'.format(get_close_matches(word, data.keys())[0]))
+        action = input('Did you mean {} instead? ["y" or "n"]: '.format(get_close_matches(word, data.keys())[0]))
+        if action == "y":
+            return data[get_close_matches(word, data.keys())[0]]
+        return "We don't understand you search. Please try again later."
 
     return "That word does not exist. Please double check!"
 
