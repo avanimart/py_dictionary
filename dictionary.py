@@ -26,5 +26,12 @@ def retrieve_definition(word):
 user_input = input("Enter a word: ").lower()
 # s = SequenceMatcher(None, user_in)
 
-print(retrieve_definition(user_input))
+output = retrieve_definition(user_input)
 
+# if word has more than one definition, print them recursively
+if type(output) == list:
+    for item in output:
+        print("-", item)
+
+# for words with only one definition, just print the definition
+print("-", output)
